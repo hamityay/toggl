@@ -12,4 +12,9 @@
  *
  *= require_tree .
  *= require_self
+
+ *= require foundation
+ *= require foundation_and_overrides
  */
+@import "foundation";
+@import "foundation_and_overrides";

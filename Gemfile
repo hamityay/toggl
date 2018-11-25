@@ -60,3 +60,13 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# haml view support for rails
+gem 'haml'
+gem 'haml-rails'
+
+# foundation required gems
+gem 'sprockets', '>= 3.0.0'
+gem 'sprockets-es6'
+gem 'foundation-rails'
+gem 'autoprefixer-rails'

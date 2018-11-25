@@ -1,0 +1,29 @@
+%h1 Listing timers
+
+%table
+  %thead
+    %tr
+      %th Info
+      %th Start
+      %th Finish
+      %th Type
+      %th User
+      %th
+      %th
+      %th
+
+  %tbody
+    - @timers.each do |timer|
+      %tr
+        %td= timer.info
+        %td= timer.start
+        %td= timer.finish
+        %td= timer.type
+        %td= timer.user
+        %td= link_to 'Show', timer
+        %td= link_to 'Edit', edit_timer_path(timer)
+        %td= link_to 'Destroy', timer, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Timer', new_timer_path

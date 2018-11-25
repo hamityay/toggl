@@ -12,10 +12,10 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require foundation
 //= require turbolinks
 //= require_tree .
 
-//= require foundation
 $(document).on('turbolinks:load', function() {
     $(function(){ $(document).foundation(); });
 });

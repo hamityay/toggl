@@ -73,3 +73,6 @@ gem 'autoprefixer-rails'
 
 # simple form gem
 gem 'simple_form'
+
+# devise gem for authentication and athorization
+gem 'devise'

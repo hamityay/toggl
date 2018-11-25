@@ -70,3 +70,9 @@ gem 'sprockets', '>= 3.0.0'
 gem 'sprockets-es6'
 gem 'foundation-rails'
 gem 'autoprefixer-rails'
+
+# simple form gem
+gem 'simple_form'
+
+# devise gem for authentication and athorization
+gem 'devise'

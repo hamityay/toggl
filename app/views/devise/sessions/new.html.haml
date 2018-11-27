@@ -1,14 +1,17 @@
-%h2 Log in
-= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .form-inputs
-    = f.input :email,
-      required: false,
-      autofocus: true,
-      input_html: { autocomplete: "email" }
-    = f.input :password,
-      required: false,
-      input_html: { autocomplete: "current-password" }
-    = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
-  .form-actions
-    = f.button :submit, "Log in"
-= render "devise/shared/links"
+.login-section
+  .login-section-form
+    %h2 Log in
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .form-inputs
+        = f.input :email, label: false, placeholder: "E-mail",
+          required: false,
+          autofocus: true,
+          input_html: { autocomplete: "email" }
+        = f.input :password, label: false, placeholder: "Password",
+          required: false,
+          input_html: { autocomplete: "current-password" }
+        .not-shadow
+          = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+      .form-actions.expanded.button-group.small
+        = f.button :submit, "Log in", class: "button medium coral"
+        = render "devise/shared/links"

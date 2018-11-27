@@ -91,6 +91,9 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.25)
+    foundation-icons-sass-rails (3.0.0)
+      railties (>= 3.1.1)
+      sass-rails (>= 3.1.1)
     foundation-rails (6.5.1.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -247,6 +250,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  foundation-icons-sass-rails
   foundation-rails
   haml
   haml-rails

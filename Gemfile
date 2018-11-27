@@ -76,3 +76,5 @@ gem 'simple_form'
 
 # devise gem for authentication and athorization
 gem 'devise'
+
+gem 'foundation-icons-sass-rails'

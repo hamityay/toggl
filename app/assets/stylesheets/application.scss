@@ -15,3 +15,24 @@
  *= require_tree .
 
  */
+ $signup-height: 100vh;
+.signup-section {
+    background: url('/sign_up1.jpg') 50% no-repeat;
+    background-size: cover;
+    height: $signup-height;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding-top: 3vh;
+    // align-items: center;
+
+    .signup-section-form {
+        width: 50ch;
+        padding: 5px;
+        .button {
+            color: white;
+        }
+    }
+}
+ 
+ 

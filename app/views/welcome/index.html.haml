@@ -1,2 +1,9 @@
-%h1 Welcome#index
-%p Find me in app/views/welcome/index.html.haml
+.main-section
+	.main-content
+		.main-section-text
+			%h1 Where did time go?
+			%h5 Turn your team on to productivity with Toggl the time tracker.
+			= link_to new_user_registration_path do
+				%button.button.small.primary Sign Up
+			= link_to new_user_session_path do
+				%button.button.small.warning Login

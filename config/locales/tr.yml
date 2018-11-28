@@ -1,39 +1,39 @@
-en:
+tr:
   date:
     formats:
       # Use the strftime parameters for formats.
       # When no format has been given, it uses default.
       # You can provide other formats here if you like!
-      default: "%Y-%m-%d"
+      default: "%d/%m/%Y"
       short: "%b %d"
       long: "%B %d, %Y"
 
-    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
-    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+    day_names: [Pazar, Pazartesi, Salı, Çarşamba, Perşembe, Cuma, Cumartesi]
+    abbr_day_names: [Pzr, Ptesi, Sal, Çarş, Perş, Cuma, Ctesi]
 
     # Don't forget the nil at the beginning; there's no such thing as a 0th month
-    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
-    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+    month_names: [~, Ocak, Şubat, Mart, Nisan, Mayıs, Haziran, Temmuz, Ağustos, Eylül, Ekim, Kasım, Aralık]
+    abbr_month_names: [~, Oca, Şub, Mar, Nis, May, Haz, Tem, Ağu, Eyl, Eki, Kas, Arlk]
     # Used in date_select and datetime_select.
     # order:
-    #   - year
-    #   - month
-    #   - day
+    #   - Yıl
+    #   - Ay
+    #   - Gün
 
   time:
     formats:
-      default: "%a, %d %b %Y %H:%M:%S %z"
+      default: "%d/%m/%Y %H:%M"
       short: "%d %b %H:%M"
       long: "%B %d, %Y %H:%M"
-    am: "am"
-    pm: "pm"
+    am: "Ö.Ö."
+    pm: "Ö.S."
 
 # Used in array.to_sentence.
   support:
     array:
       words_connector: ", "
-      two_words_connector: " and "
-      last_word_connector: ", and "
+      two_words_connector: " ve "
+      last_word_connector: ", ve "
   number:
     # Used in NumberHelper.number_to_delimited()
     # These are also the defaults for 'currency', 'percentage', 'precision', and 'human'
@@ -55,7 +55,7 @@ en:
       format:
         # Where is the currency sign? %u is the currency unit, %n the number (default: $5.00)
         format: "%u%n"
-        unit: "$"
+        unit: "₺"
         # These five are to override number.format and are optional
         separator: "."
         delimiter: ","
@@ -127,9 +127,9 @@ en:
           # ten:
           #   one: Ten
           #   other: Tens
-          # hundred: Hundred
-          thousand: Thousand
-          million: Million
-          billion: Billion
-          trillion: Trillion
-          quadrillion: Quadrillion
+          hundred: Yüz
+          thousand: Bin
+          million: Milyon
+          billion: Milyar
+          trillion: Trilyon
+          quadrillion: Quadrilyon

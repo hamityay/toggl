@@ -1,0 +1,8 @@
+---
+en:
+  activerecord:
+    errors:
+      models:
+        timer:
+          attributes:
+            start: Start date cannot be greated than finish date.

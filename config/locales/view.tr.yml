@@ -1,0 +1,40 @@
+---
+tr:
+  main:
+    header: Zaman ne çabuk geçti?
+    desc: Zamanı takip eden Toggl ile takımınızın üretkenliğini artırın.
+    timer: Zamanylayıcı
+  devise:
+    login: Giriş yap
+    logout: Çıkış yap
+    sign_up: Kayıt ol
+    forget: Şifremi unuttum.
+    send_me_reset: Şifre sıfırlama talimatlarını gönder.
+    update: Güncelle
+    cancel: Hesabımı iptal et
+    back: Geri git
+  timer:
+    left_bar:
+      dashboard: Panel
+      times: Zamanların
+      insight: Insight
+      reports: Raporlama
+      update_profile: Profilini Güncelle
+    index:
+      listing: Zamanlar Listeleniyor
+      action: İşlemler
+      are_you_sure: Silmek istediğinize emin misiniz?
+      create: Zaman Ekle
+      time: "%{time} dk."
+    insight:
+      summary_sentences_html: "Zamanlarınızın toplamı <strong>%{personal_time} dk.</strong> bu da toplam zamanların <strong>% %{percentage}</strong> 'ne eşit."
+      title_1: Zamanlarınızın, Zaman Tipine Göre Dağılımı
+      title_2: Tüm Kullanıcıların Zamanlarının, Zaman Tipine Göre Dağılımı
+      title_3: Zamanlarınızın Günlere Göre Gösterimi
+    report:
+      search_keyword: Arama için karakter girin
+      search_user: Kullanıcı seçin (bir yada birden fazla)
+      search_type: Zaman Tipi seçin (bir yada birden fazla)
+      search_first: Zaman Aralığı seçin
+      search: Arama yap
+      extract: Extract

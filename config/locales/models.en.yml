@@ -1,0 +1,44 @@
+---
+en:
+  activerecord:
+    errors:
+      messages:
+        blank: "%{attribute} giriniz."
+        invalid: "%{attribute} geçersizdir."
+      models:
+        user:
+          attributes:
+            password:
+              too_short: Password must be min 8 characters.
+            email:
+              taken: This email has been registered before.
+    models:
+      user: User
+      users: Users
+      type: Type
+      types: Types
+      timer: Timer
+      timers: Timers
+    attributes:
+      user:
+        id: ID
+        username: Username
+        name: First Name
+        surename: Last Name
+        is_active: Is Active?
+        is_admin: Is Admin?
+        remember_me: Remember me?
+        current_password: Current Password
+        new_password: New password
+        confirm_password: Confirm password
+      type:
+        id: ID
+        name: Type
+      timer:
+        id: ID
+        info: Info
+        start: Start Date
+        finish: Finish Date
+        user_id: User
+        type_id: Type
+        duration: Duration

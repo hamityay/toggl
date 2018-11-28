@@ -1,0 +1,8 @@
+---
+tr:
+  activerecord:
+    errors:
+      models:
+        timer:
+          attributes:
+            start: Başlangıç tarihi bitiş tarihinden büyük olamaz.

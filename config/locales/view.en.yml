@@ -1,0 +1,40 @@
+---
+en:
+  main:
+    header: Where did time go?
+    desc: Turn your team on to productivity with Toggl the time tracker.
+    timer: Timer
+  devise:
+    login: Log in
+    logout: Log out
+    sign_up: Sign up
+    forget: Forget my password.
+    send_me_reset: Send me reset password instructions.
+    update: Update
+    cancel: Cancel my account
+    back: Back
+  timer:
+    left_bar:
+      dashboard: Dashboard
+      times: Your Times
+      insight: Insight
+      reports: Reports
+      update_profile: Update Profile
+    index:
+      listing: Listing Your Times
+      action: Action
+      are_you_sure: Are you sure want to delete?
+      create: Create Time
+      time: "%{time} min."
+    insight:
+      summary_sentences_html: "Sum of your timers is <strong>%{personal_time} min.</strong> and this is <strong>%{percentage} %</strong> of all users."
+      title_1: Your Times Percentages by Type
+      title_2: All Users Times Percentages by Type
+      title_3: Your Times by Day
+    report:
+      search_keyword: Enter for search
+      search_user: Choose User (can be more than one)
+      search_type: Choose Type (can be more than one)
+      search_first: Choose Time Between
+      search: Search
+      extract: Extract

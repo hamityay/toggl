@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # relations
+  has_many :timers, dependent: :nullify
+
   # Scopes
   scope :active, -> { where(is_active: true) }
   scope :admin, -> { where(is_admin: true) }

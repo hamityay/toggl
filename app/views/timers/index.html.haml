@@ -15,7 +15,7 @@
         = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
         .grid-x.grid-padding-x
           .cell.medium-2
-            = f.input :info, label: false, placeholder: "Explanation", as: :string
+            = f.input :info, label: false, placeholder: t("activerecord.attributes.timer.info"), as: :string
           .cell.medium-2
             = f.association :type, label: false, default: true
           .cell.medium-3
@@ -23,17 +23,17 @@
           .cell.medium-3
             = f.input :finish, label: false
           .cell.medium-2
-            = f.button :submit
-      %h2.text-center Listing Times
+            = f.button :submit, value: t("timer.index.create")
+      %h2.text-center= t("timer.index.listing")
       %table.responsive-card-table.unstriped
         %thead
           %tr
-            %th Info
-            %th Type
-            %th Start
-            %th Finish
-            %th Duration
-            %th Action
+            %th= t("activerecord.attributes.timer.info")
+            %th= t("activerecord.attributes.timer.type_id")
+            %th= t("activerecord.attributes.timer.start")
+            %th= t("activerecord.attributes.timer.finish")
+            %th= t("activerecord.attributes.timer.duration")
+            %th= t("timer.index.action")
         %tbody
           - current_user.timers.each do |time|
             %tr
@@ -41,8 +41,8 @@
               %td{"data-label" => "Type"}= time.type.name
               %td{"data-label" => "Start"}= time.start
               %td{"data-label" => "Finish"}= time.finish
-              %td{"data-label" => "Duration"}= time.duration.to_s + " min."
+              %td{"data-label" => "Duration"}= t("timer.index.time",time: time.duration.to_s)
               %td{"data-label" => "Action"}
-                = link_to time, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete', 'data-toggle' => 'tooltip' do
+                = link_to time, method: :delete, data: { confirm: t('timer.index.are_you_sure') }, title: 'Delete', 'data-toggle' => 'tooltip' do
                   %i.fi-paint-bucket
 

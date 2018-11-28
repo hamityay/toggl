@@ -81,3 +81,4 @@ gem 'foundation-icons-sass-rails'
 
 # for charts
 gem "chartkick"
+gem 'groupdate'

@@ -1,3 +1,320 @@
 // Place all the styles related to the Timers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'settings';
+
+$app-dashboard-top-nav-color: #2c3840;
+$app-dashboard-top-nav-height: 55px;
+$offcanvas-transition-length: 3;
+$offcanvas-transition-timing: 3;
+
+.app-dashboard {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-dashboard-body {
+  flex: 1 1 auto;
+  display: flex;
+}
+
+.app-dashboard-top-nav-bar  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $app-dashboard-top-nav-color;
+  height: $app-dashboard-top-nav-height;
+  width: 100%;
+  flex: 0 0 $app-dashboard-top-nav-height;
+  .align-left{
+    margin-right: 37ch;
+    margin-top: 8ch;
+  }
+  .menu-icon {
+    vertical-align: text-bottom;
+  }
+  .align-right {
+    margin-left: 17ch;
+    margin-bottom: 7.5ch;
+  }
+}
+
+.app-dashboard-logo {
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  a {
+    color: white !important;
+  }
+}
+
+.app-dashboard-search-bar-container {
+  position: relative;
+}
+
+.app-dashboard-search {
+  background: lighten($app-dashboard-top-nav-color, 10%);
+  border: 0;
+  margin-bottom: 0;
+  color: white;
+
+  &:active,
+  &:focus {
+    background: darken($app-dashboard-top-nav-color, 5%);
+  }
+}
+
+.app-dashboard-search-icon {
+  position: absolute;
+  color: white;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.app-dashboard-top-bar-actions {
+  align-items: center;
+  display: flex;
+
+  button {
+    margin-bottom: 0;
+    margin-right: 2rem;
+
+    &.hollow {
+      border-color: white;
+      color: white;
+
+      &:hover {
+        background: white;
+        color: blue;
+      }
+    }
+  }
+
+  .fa-info-circle {
+    color: white;
+    font-size: 1.5rem;
+  }
+}
+
+.app-dashboard-sidebar {
+  background-color: white;
+  height: 100%;
+  overflow-x: visible;
+  overflow-y: auto;
+  z-index: 1;
+  transition: all $offcanvas-transition-length $offcanvas-transition-timing;
+
+
+  .app-dashboard-open-sidebar, .app-dashboard-close-sidebar{
+    align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 1rem;
+  }
+
+  .app-dashboard-sidebar-close-button {
+    font-size: 14px;
+  }
+
+  .app-dashboard-sidebar-inner {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    .menu > li > a {
+      align-items: center;
+    }
+  }
+  .fa.large {
+    font-size: rem-calc(24);
+    width: 40px;
+  }
+}
+
+.reveal-for-medium {
+  .app-dashboard-open-sidebar {
+    display: none;
+  }
+}
+
+.menu.vertical
+  i {
+    font-size: 25px;
+  }
+
+.app-dashboard-sidebar-footer {
+  background: rgba(42, 57, 79, 0.8);
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  position: absolute;
+  width: 100%;
+}
+
+.app-dashboard-open-sidebar {
+  text-align: center;
+}
+
+.app-dashboard-body-content {
+  transition: all $offcanvas-transition-length $offcanvas-transition-timing;
+  overflow-y: auto;
+  flex: 1 1 0;
+  padding: 20px;
+  background-color: white;
+  .off-canvas-content {
+    .datetime {
+      align-content: center;
+    }
+  }
+}
+
+@mixin shrunk-sidebar() {
+  .app-dashboard-close-sidebar, .app-dashboard-sidebar-text {
+    display: none;
+  }
+
+  .app-dashboard-open-sidebar {
+    display: block;
+  }
+
+  .app-dashboard-sidebar {
+    width: 80px;
+    .fa.large {
+      width: auto;
+    }
+  }
+
+  .off-canvas-content {
+    margin-left: 80px;
+    width: calc(100% - 80px);
+  }
+
+  .navigation {
+    margin-top: 2rem;
+    text-align: center;
+
+  }
+  .menu.vertical > li > a {
+    justify-content: center;
+  }
+
+  .menu {
+    li {
+      &::after {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      a {
+        padding: 0.75rem;
+        svg {
+          margin: 0;
+        }
+        span {
+          display: none;
+          opacity: 0;
+          transition: opacity 0.5s ease-in-out;
+        }
+      }
+    }
+  }
+}
+
+// mini sidebar on medium/tablet size
+@include breakpoint(medium only) {
+  .app-dashboard.shrink-medium {
+    @include shrunk-sidebar()
+  }
+}
+@include breakpoint(large) {
+  .app-dashboard.shrink-large {
+    @include shrunk-sidebar()
+  }
+}
+
+$responsive-card-table-bottom-gap: 1.5rem;
+$responsive-card-table-border: 1px solid $black;
+$responsive-card-table-stack-point: 640px;
+$responsive-card-table-label-bg: $light-gray;
+
+.responsive-card-table {
+  border-collapse: collapse;
+
+  &.unstriped tbody {
+    background-color: transparent;
+  }
+
+  th {
+    background-color: $responsive-card-table-label-bg;
+  }
+
+  tr,
+  th,
+  td {
+    border: $responsive-card-table-border;
+  }
+
+  @media screen and (max-width: $responsive-card-table-stack-point) {
+    thead tr {
+      position: absolute;
+      top: -9999em;
+      left: -9999em;
+    }
+
+    tr {
+      border: $responsive-card-table-border;
+      display: block;
+    }
+
+    tr + tr {
+      margin-top: $responsive-card-table-bottom-gap;
+    }
+    /* Get table cells to act like rows */
+
+    td {
+      border: none;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      border-bottom: $responsive-card-table-border;
+      padding-left: 50%;
+      position: relative;
+
+      &:before {
+        content: attr(data-label);
+        display: inline-block;
+        font-weight: bold;
+        line-height: 1.5;
+        margin-left: -100%;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        background: $responsive-card-table-label-bg;
+        width: 45%;
+        height: 95%;
+        left: 1px;
+        top: 1px;
+        z-index: 0;
+      }
+    }
+  }
+}
+
+.insight-section {
+  display: flex;
+  justify-content: center;
+  padding: 3vh;
+}
+
+.insight-section-text{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}

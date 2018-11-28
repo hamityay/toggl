@@ -5,10 +5,10 @@
 
   .form-inputs
     = f.input :info
+    = f.association :type
     = f.input :start
     = f.input :finish
-    = f.association :type
-    = f.association :user
+    -#= f.association :user
 
   .form-actions
     = f.button :submit

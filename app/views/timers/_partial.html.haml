@@ -1,0 +1,46 @@
+#app-dashboard-sidebar.app-dashboard-sidebar.position-left.off-canvas.off-canvas-absolute.reveal-for-medium{"data-off-canvas" => ""}
+  .app-dashboard-sidebar-title-area
+    .app-dashboard-close-sidebar
+      %h3.app-dashboard-sidebar-block-title Dashboard
+      %button#close-sidebar.app-dashboard-sidebar-close-button.show-for-medium{"aria-label" => "Close menu", "data-app-dashboard-toggle-shrink" => "", :type => "button"}
+        %span{"aria-hidden" => "true"}
+          %a{:href => "#"}
+            %i.fi.fi-arrow-left
+    .app-dashboard-open-sidebar
+      %button#open-sidebar.app-dashboard-open-sidebar-button.show-for-medium{"aria-label" => "open menu", "data-app-dashboard-toggle-shrink" => "", :type => "button"}
+        %span{"aria-hidden" => "true"}
+          %a{:href => "#"}
+            %i.fi-arrow-right
+  .app-dashboard-sidebar-inner
+    %ul.menu.vertical
+      %li
+        %a.is-active{:href => timers_path}
+          %i.large.fi-clock.style1
+          %span.app-dashboard-sidebar-text Your Times
+      %li
+        %a.is-active{:href => insight_timer_path}
+          %i.large.fi-social-delicious
+          %span.app-dashboard-sidebar-text Insigths
+      %li
+        %a
+          %i.large.fi-pencil
+          %span.app-dashboard-sidebar-text Industry
+      %li
+        - if current_user.is_admin
+          %a.is-active{:href => reports_timer_path}
+            %i.large.fi-page-multiple
+            %span.app-dashboard-sidebar-text Reports
+        %hr/
+      %li
+        = link_to  edit_user_registration_path, class: "is-active" do
+          %i.large.fi-torsos-male-female
+          %span.app-dashboard-sidebar-text Update Profile
+      %li
+        = link_to  destroy_user_session_path, method: :delete, class: "is-active" do
+          %i.large.fi-power
+          %span.app-dashboard-sidebar-text Log out
+:javascript
+  $('[data-app-dashboard-toggle-shrink]').on('click', function(e) {
+    e.preventDefault();
+    $(this).parents('.app-dashboard').toggleClass('shrink-medium').toggleClass('shrink-large');
+  });

@@ -1,4 +1,6 @@
 class TimersController < ApplicationController
+  before_action :check_user
+  before_action :check_admin, only: :reports
   before_action :set_timer, only: [:show, :edit, :update, :destroy]
 
   # GET /timers
@@ -25,10 +27,11 @@ class TimersController < ApplicationController
   # POST /timers.json
   def create
     @timer = Timer.new(timer_params)
+    @timer.user_id = current_user.id
 
     respond_to do |format|
       if @timer.save
-        format.html { redirect_to @timer, notice: 'Timer was successfully created.' }
+        format.html { redirect_to timers_path, notice: 'Timer was successfully created.' }
         format.json { render :show, status: :created, location: @timer }
       else
         format.html { render :new }
@@ -61,14 +64,60 @@ class TimersController < ApplicationController
     end
   end
 
+  def insight
+    @user_time= current_user.timers.pluck(:duration).sum
+    total_time = Timer.all.pluck(:duration).sum
+    if @user_time > 0
+      @user_percentage = ((@user_time / total_time) * 100).round 2
+    end
+    types = current_user.timers.group(:type).sum(:duration)
+    types = types.sort_by {|_key, value| _key}.reverse.to_h
+    @types_rate = {}
+    types.keys.each do |type|
+      @types_rate[type.name] = ((types[type] / @user_time) * 100).round 2
+    end
+    all_types = Timer.all.group(:type).sum(:duration)
+    all_types = all_types.sort_by {|_key, value| _key}.reverse.to_h
+    @all_types_rate = {}
+    all_types.keys.each do |type|
+      @all_types_rate[type.name] = ((all_types[type] / total_time) * 100).round 2
+    end
+  end
+
+  def reports
+    @search = Timer.order(id: :desc).search(params[:q])
+    @timers = @search.result(distinct: true).includes(:user, :type)
+    respond_to do |format|
+      format.html
+      format.xlsx {
+        render xlsx: 'reports', filename: "#{Date.today}-toggl-reports.xlsx", disposition: 'inline', xlsx_created_at: 3.days.ago, xlsx_author: "Toggl"
+      }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_timer
       @timer = Timer.find(params[:id])
+      unless current_user.timer_ids.include?(@timer.id)
+        redirect_to :back, info: "You do not have a permission to access this page."
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def timer_params
       params.require(:timer).permit(:info, :start, :finish, :type_id, :user_id)
     end
+
+  def check_user
+    unless user_signed_in?
+      redirect_to new_user_registration_path, alert: "Before to access this page, you shuld sign up."
+    end
+  end
+
+  def check_admin
+    unless current_user.is_admin
+      redirect_to timers_path, notice: "You do not have a permission to access this page."
+    end
+  end
 end

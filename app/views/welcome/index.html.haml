@@ -1,2 +1,14 @@
-%h1 Welcome#index
-%p Find me in app/views/welcome/index.html.haml
+.main-section
+  .main-section-text
+    %h1 Where did time go?
+    %h5 Turn your team on to productivity with Toggl the time tracker.
+    - if user_signed_in?
+      = link_to timers_path do
+        %button.button.medium.turquoise Timer
+      = link_to destroy_user_session_path, method: :delete do
+        %button.button.medium.alert Log out
+    - else
+      = link_to new_user_registration_path do
+        %button.button.medium.darkcyan Sign up
+      = link_to new_user_session_path do
+        %button.button.medium.coral Log in

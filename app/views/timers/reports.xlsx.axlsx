@@ -1,0 +1,30 @@
+wb = xlsx_package.workbook
+
+wb.styles do |style|
+  center = style.add_style(border: Axlsx::STYLE_THIN_BORDER,
+                           alignment: {horizontal: :center})
+  header = style.add_style(bg_color: "C0C0C0",
+                           border: Axlsx::STYLE_THIN_BORDER,
+                           alignment: {horizontal: :center}, b: true, sz: 10, )
+  highlight_cell = style.add_style(bg_color: "EFC376",
+                                   border: Axlsx::STYLE_THIN_BORDER,
+                                   alignment: { horizontal: :center },
+                                   :format_code => '# ###.##')
+
+  sheet_name = "Toggl Reports"
+
+  wb.add_worksheet(name: sheet_name) do |sheet|
+    if I18n.locale.to_s == "en"
+      attributes = ["Info", "Username", "E-mail", "Type", "Start", "Finish", "Duration"]
+      sheet.add_row attributes, style: header
+    else
+      attributes = ["Blgi", "Kullanıcı Adı", "E-mail", "Tipi", "Başlama Zamanı", "Bitiş Zamanı", "Süre"]
+      sheet.add_row attributes, style: header
+    end
+
+    @timers.each do |timer|
+      values = [timer.info, timer.user.username, timer.user.email, timer.type.name, timer.start, timer.finish, timer.duration]
+      sheet.add_row values, style: [highlight_cell, center, center, center, center, center, center]
+    end
+  end
+end

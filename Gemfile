@@ -85,3 +85,8 @@ gem 'groupdate'
 
 # for searches
 gem 'ransack'
+
+# excel export
+gem 'rubyzip', '~> 1.2', '>= 1.2.2'
+gem 'axlsx', '~> 3.0.0.pre'
+gem 'axlsx_rails'

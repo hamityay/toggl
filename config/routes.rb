@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :timers
+  resources :timers, only: %i[index create update destroy]
+  get "/insight", to: "timers#insight", as: :insight_timer
+  get "/reports", to: "timers#reports", as: :reports_timer
   devise_path_names = {
       sign_in: 'login',
       sign_out: 'logout',

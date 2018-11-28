@@ -78,3 +78,6 @@ gem 'simple_form'
 gem 'devise'
 
 gem 'foundation-icons-sass-rails'
+
+# for charts
+gem "chartkick"

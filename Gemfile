@@ -90,3 +90,7 @@ gem 'ransack'
 gem 'rubyzip', '~> 1.2', '>= 1.2.2'
 gem 'axlsx', '~> 3.0.0.pre'
 gem 'axlsx_rails'
+
+# i18n gems
+gem 'rails-i18n', '~> 5.1'
+gem 'devise-i18n'

@@ -15,9 +15,9 @@
           .cell.medium-2
             = f.input_field :info_or_type_name_or_user_name_cont, label: false, class: 'form-control', placeholder: "Enter for search"
           .cell.medium-2
-            = f.input :user_id_eq, label: false, collection: get_users, multiple: true, include_blank: "Select User"
+            = f.input :user_id_in, label: false, collection: get_users, multiple: true, include_blank: "Select User", input_html: { multiple: true }
           .cell.medium-2
-            = f.input :type_id_eq, label: false, collection: get_types, multiple: true, include_blank: "Select Type"
+            = f.input :type_id_in, label: false, collection: get_types, multiple: true, include_blank: "Select Type", input_html: { multiple: true }
           .cell.medium-2
             = f.input :start_gteq, label: "First Date:", as: :datetime, value: ((params[:q].present? and params[:q][:start_gteq].present?) ? params[:q][:start_gteq].to_datetime : DateTime.now - 1.week), hint: "Eklenen zmanların başlangıç tarihlerine göre filtrelemektedir.", 'data-toggle' => 'tooltip'
           .cell.medium-2

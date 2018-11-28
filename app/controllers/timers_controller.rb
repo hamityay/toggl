@@ -67,7 +67,9 @@ class TimersController < ApplicationController
   def insight
     @user_time= current_user.timers.pluck(:duration).sum
     total_time = Timer.all.pluck(:duration).sum
-    @user_percentage = ((@user_time / total_time) * 100).round 2
+    if @user_time > 0
+      @user_percentage = ((@user_time / total_time) * 100).round 2
+    end
     types = current_user.timers.group(:type).sum(:duration)
     types = types.sort_by {|_key, value| _key}.reverse.to_h
     @types_rate = {}

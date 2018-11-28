@@ -1,9 +1,23 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  before_action :set_locale
   before_action :set_devise_permitted_parameters, if: :devise_controller?
 
   protected
+
+  def extract_locale_from_accept_language_header
+    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+  end
+
+  def set_locale
+    unless session[:locale].present?
+      browser_locale = extract_locale_from_accept_language_header == "tr" ? "tr" : "en"
+      I18n.locale = browser_locale || I18n.default_locale
+      session[:locale] = browser_locale || I18n.locale
+      Rails.application.routes.default_url_options[:locale] = I18n.locale
+    end
+  end
 
   def set_devise_permitted_parameters
     sign_up_attributes = %i[email password password_confirmation name surname username]

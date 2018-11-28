@@ -85,6 +85,12 @@ class TimersController < ApplicationController
   def reports
     @search = Timer.order(id: :desc).search(params[:q])
     @timers = @search.result(distinct: true).includes(:user, :type)
+    respond_to do |format|
+      format.html
+      format.xlsx {
+        render xlsx: 'reports', filename: "#{Date.today}-toggl-reports.xlsx", disposition: 'inline', xlsx_created_at: 3.days.ago, xlsx_author: "Toggl"
+      }
+    end
   end
 
   private

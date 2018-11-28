@@ -25,6 +25,8 @@
           .cell.medium-2
             = f.button :submit
       %h2.text-center= "Listing Times -# " + @timers.count.to_s + " -"
+      = link_to reports_timer_path(format: :xlsx, params: params.permit!) do
+        %i.fi-page-export
       %table.responsive-card-table.unstriped
         %thead
           %tr

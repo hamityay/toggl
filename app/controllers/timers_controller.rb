@@ -83,13 +83,17 @@ class TimersController < ApplicationController
   end
 
   def reports
-
+    @search = Timer.order(id: :desc).search(params[:q])
+    @timers = @search.result(distinct: true).includes(:user, :type)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_timer
       @timer = Timer.find(params[:id])
+      unless current_user.timer_ids.include?(@timer.id)
+        redirect_to :back, info: "You do not have a permission to access this page."
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

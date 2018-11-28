@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Timer.all.each do |t|
+  d = (t.finish - t.start) / 60.0
+  t.update(duration: d)
+end

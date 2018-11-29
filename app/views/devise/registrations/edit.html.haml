@@ -1,31 +1,34 @@
+- content_for :title do
+  = t("title.edit")
 .signup-section
   .signup-section-form
     %h2
-      Edit #{resource_name.to_s.humanize}
+      = t("devise.update")
+      #{resource_name.to_s.humanize}
     = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
       = f.error_notification
       .form-inputs
-        = f.input :name, label: false, placeholder: "First Name", required: true, autofocus: true
-        = f.input :surname, label: false, placeholder: "Last Name", required: true
-        = f.input :username, label: false, placeholder: "Username", required: true
-        = f.input :email, label: false, placeholder: "E-mail", required: true
+        = f.input :name, label: false, placeholder: t("activerecord.attributes.user.name"), required: true, autofocus: true
+        = f.input :surname, label: false, placeholder: t("activerecord.attributes.user.surename"), required: true
+        = f.input :username, label: false, placeholder: t("activerecord.attributes.user.username"), required: true
+        = f.input :email, label: false, placeholder: t("activerecord.attributes.user.email"), required: true
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           %p
             Currently waiting confirmation for: #{resource.unconfirmed_email}
-        = f.input :password, label: false, placeholder: "New Password",
+        = f.input :password, label: false, placeholder: t("activerecord.attributes.user.new_password"),
           hint: "leave it blank if you don't want to change it",
           required: false,
           input_html: { autocomplete: "new-password" }
-        = f.input :password_confirmation, label: false, placeholder: "Enter new password again",
+        = f.input :password_confirmation, label: false, placeholder: t("activerecord.attributes.user.password_confirmation"),
           required: false,
           input_html: { autocomplete: "new-password" }
-        = f.input :current_password, label: false, placeholder: "Current password",
+        = f.input :current_password, label: false, placeholder: t("activerecord.attributes.user.current_password"),
           hint: "we need your current password to confirm your changes",
           required: true,
           input_html: { autocomplete: "current-password" }
       .form-actions.expanded.button-group.medium
-        = f.button :submit, "Update", class: "button medium darkcyan"
+        = f.button :submit, t("devise.update"), class: "button medium darkcyan"
 
-        = link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "button coral"
+        = link_to t("devise.cancel"), registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "button coral"
 
-        = link_to "Back", :back, class: "button secondary"
+        = link_to t("devise.back"), :back, class: "button secondary"

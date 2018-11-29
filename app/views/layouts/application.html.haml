@@ -5,7 +5,7 @@
 
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
 
-    %title= content_for?(:title) ? yield(:title) : "Untitled"
+    %title= content_for?(:title) ? yield(:title) : t("title.main")
     %script{:crossorigin => "anonymous", :integrity => "sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=", :src => "https://code.jquery.com/jquery-3.3.1.min.js"}
 
     = stylesheet_link_tag "application"
@@ -17,4 +17,11 @@
     .notice= notice
     .alert= alert
 
+    .change_language.float-right
+      - if I18n.locale == :tr
+        = link_to set_english_path(path: request.path, cont: params[:controller], act: params[:action], params: params.permit), title: t("main.change_language"), 'data-toggle' => 'tooltip' do
+          EN
+      - elsif I18n.locale == :en
+        = link_to set_turkish_path(path: request.path, cont: params[:controller], act: params[:action], params: params.permit), title: t("main.change_language"), 'data-toggle' => 'tooltip' do
+          TR
     = yield

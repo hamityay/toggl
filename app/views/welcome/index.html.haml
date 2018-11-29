@@ -1,14 +1,16 @@
+- content_for :title do
+  = t("title.main")
 .main-section
   .main-section-text
-    %h1 Where did time go?
-    %h5 Turn your team on to productivity with Toggl the time tracker.
+    %h1= t("main.header")
+    %h5= t("main.desc")
     - if user_signed_in?
-      = link_to timers_path do
-        %button.button.medium.turquoise Timer
-      = link_to destroy_user_session_path, method: :delete do
-        %button.button.medium.alert Log out
+      = link_to timers_path(I18n.locale) do
+        %button.button.medium.turquoise= t("main.timer")
+      = link_to destroy_user_session_path(I18n.locale), method: :delete do
+        %button.button.medium.alert= t("devise.logout")
     - else
-      = link_to new_user_registration_path do
-        %button.button.medium.darkcyan Sign up
-      = link_to new_user_session_path do
-        %button.button.medium.coral Log in
+      = link_to new_user_registration_path(I18n.locale) do
+        %button.button.medium.darkcyan= t("devise.signup")
+      = link_to new_user_session_path(I18n.locale) do
+        %button.button.medium.coral= t("devise.login")

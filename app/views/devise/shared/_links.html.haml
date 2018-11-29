@@ -1,17 +1,17 @@
 - if controller_name != 'sessions'
-  = link_to "Log in", new_session_path(resource_name), class: "button medium coral"
+  = link_to t("devise.login"), new_session_path(resource_name), class: "button medium coral"
   %br/
 - if devise_mapping.registerable? && controller_name != 'registrations'
-  = link_to "Sign up", new_registration_path(resource_name), class: "button medium darkcyan"
+  = link_to t("devise.sign_up"), new_registration_path(resource_name), class: "button medium darkcyan"
   %br/
 - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
-  = link_to "Forgot your password?", new_password_path(resource_name), class: "button medium red"
+  = link_to t("devise.forget"), new_password_path(resource_name), class: "button medium red"
   %br/
 - if devise_mapping.confirmable? && controller_name != 'confirmations'
-  = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "button medium purple"
+  = link_to t("devise.did_not_confirmation"), new_confirmation_path(resource_name), class: "button medium purple"
   %br/
 - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
-  = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: "button medium purple"
+  = link_to t("devise.did_not_unlock"), new_unlock_path(resource_name), class: "button medium purple"
   %br/
 - if devise_mapping.omniauthable?
   - resource_class.omniauth_providers.each do |provider|

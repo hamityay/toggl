@@ -1,10 +1,12 @@
+- content_for :title do
+  = t("title.reports")
 .app-dashboard.shrink-medium
   .row.expanded.app-dashboard-top-nav-bar
     .columns.medium-2
       .align-left
         %button.menu-icon.hide-for-medium{"data-toggle" => "app-dashboard-sidebar"}
       .app-dashboard-logo.align-right
-        = link_to "Toggl", root_path
+        = link_to "Toggl", root_path(I18n.locale)
     .columns.show-for-medium
     .columns.shrink.app-dashboard-top-bar-actions
   .app-dashboard-body.off-canvas-wrapper
@@ -13,35 +15,37 @@
       = search_form_for @search, url: reports_timer_path, builder: SimpleForm::FormBuilder, html: {class: 'form-inline', data: { turboform: true }} do |f|
         .grid-x.grid-padding-x
           .cell.medium-2
-            = f.input_field :info_or_type_name_or_user_name_cont, label: false, class: 'form-control', placeholder: "Enter for search"
+            = f.input :info_or_type_name_or_user_name_cont, required: false, label: t("timer.report.search_keyword")
+          .cell.medium-2.fix-height
+            = f.input :user_id_in, required: false, label: t("timer.report.search_user"), collection: get_users, input_html: { multiple: true }
+          .cell.medium-2.fix-height
+            = f.input :type_id_in, required: false, label: t("timer.report.search_type"), collection: get_types, input_html: { multiple: true }
           .cell.medium-2
-            = f.input :user_id_in, required: false, label: "User", collection: get_users, input_html: { multiple: true }
+            = f.input :start_gteq, label: t("timer.report.search_first"), as: :datetime, value: ((params[:q].present? and params[:q][:start_gteq].present?) ? params[:q][:start_gteq].to_datetime : DateTime.now - 1.week), hint: "Eklenen zmanların başlangıç tarihlerine göre filtrelemektedir.", 'data-toggle' => 'tooltip'
           .cell.medium-2
-            = f.input :type_id_in, required: false, label: "Type", collection: get_types, input_html: { multiple: true }
+            = f.input :start_lteq, label: t("timer.report.search_first"), as: :datetime,  value: ((params[:q].present? and params[:q][:start_lteq].present?) ? params[:q][:start_lteq].to_datetime : DateTime.now), hint: "Eklenen zmanların başlangıç tarihlerine göre filtrelemektedir.", 'data-toggle' => 'tooltip'
           .cell.medium-2
-            = f.input :start_gteq, label: "First Date:", as: :datetime, value: ((params[:q].present? and params[:q][:start_gteq].present?) ? params[:q][:start_gteq].to_datetime : DateTime.now - 1.week), hint: "Eklenen zmanların başlangıç tarihlerine göre filtrelemektedir.", 'data-toggle' => 'tooltip'
-          .cell.medium-2
-            = f.input :start_lteq, label: "Second Date:", as: :datetime,  value: ((params[:q].present? and params[:q][:start_lteq].present?) ? params[:q][:start_lteq].to_datetime : DateTime.now), hint: "Eklenen zmanların başlangıç tarihlerine göre filtrelemektedir.", 'data-toggle' => 'tooltip'
-          .cell.medium-2
-            = f.button :submit
-      %h2.text-center= "Listing Times -# " + @timers.count.to_s + " -"
-      = link_to reports_timer_path(format: :xlsx, params: params.permit!) do
-        %i.fi-page-export
+            = f.button :submit, value: t("timer.report.search")
+      %h2.text-center= t("timer.index.listing") + " -# " + @timers.count.to_s + " -"
+      .align-right
+        = link_to reports_timer_path(format: :xlsx, params: params.permit!) do
+          = t("timer.report.extract")
+          %i.fi-page-export
       %table.responsive-card-table.unstriped
         %thead
           %tr
-            %th Info
-            %th User
-            %th Type
-            %th Start
-            %th Finish
-            %th Duration
+            %th= t("activerecord.attributes.timer.info")
+            %th= t("activerecord.attributes.timer.user_id")
+            %th= t("activerecord.attributes.timer.type_id")
+            %th= t("activerecord.attributes.timer.start")
+            %th= t("activerecord.attributes.timer.finish")
+            %th= t("activerecord.attributes.timer.duration")
         %tbody
           - @timers.each do |time|
             %tr
               %td{"data-label" => "Info"}= time.info
               %td{"data-label" => "Username"}= time.user.username
               %td{"data-label" => "Type"}= time.type.name
-              %td{"data-label" => "Start"}= time.start
-              %td{"data-label" => "Finish"}= time.finish
-              %td{"data-label" => "Duration"}= time.duration.to_s + " min."
+              %td{"data-label" => "Start"}= l(time.start, format: :long)
+              %td{"data-label" => "Finish"}= l(time.finish, format: :long)
+              %td{"data-label" => "Duration"}= t("timer.index.time",time: time.duration.to_s)

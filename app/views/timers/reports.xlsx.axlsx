@@ -23,7 +23,7 @@ wb.styles do |style|
     end
 
     @timers.each do |timer|
-      values = [timer.info, timer.user.username, timer.user.email, timer.type.name, timer.start, timer.finish, timer.duration]
+      values = [timer.info, timer.user.username, timer.user.email, timer.type.name, l(timer.start, format: :long), l(timer.finish, format: :long), timer.duration]
       sheet.add_row values, style: [highlight_cell, center, center, center, center, center, center]
     end
   end

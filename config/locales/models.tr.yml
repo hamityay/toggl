@@ -1,0 +1,44 @@
+---
+tr:
+  activerecord:
+    errors:
+      messages:
+        blank: "%{attribute} giriniz."
+        invalid: "%{attribute} geçersizdir."
+      models:
+        user:
+          attributes:
+            password:
+              too_short: Parolanız en az 8 karakter olmalıdır.
+            email:
+              taken: Bu e-posta adresi önceden kayıt edilmiştir.
+    models:
+      user: Kullanıcı
+      users: Kullanıcılar
+      type: Zaman Tipi
+      types: Zaman Tipleri
+      timer: Zaman
+      timers: Zamanlar
+    attributes:
+      user:
+        id: ID
+        username: Kullanıcı Adı
+        name: Adı
+        surename: Soyadı
+        is_active: Aktif mi?
+        is_admin: Admin mi?
+        remember_me: Beni hatırla?
+        current_password: Mevcud şifre
+        new_password: Yeni şifre
+        confirm_password: Şifre onayla
+      type:
+        id: ID
+        name: Zaman Tipi
+      timer:
+        id: ID
+        info: Yorum
+        start: Başlangıç Tarihi
+        finish: Bitiş Tarihi
+        user_id: Kullanıcı
+        type_id: Zaman Tipi
+        duration: Süre

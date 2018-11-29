@@ -1,7 +1,7 @@
 #app-dashboard-sidebar.app-dashboard-sidebar.position-left.off-canvas.off-canvas-absolute.reveal-for-medium{"data-off-canvas" => ""}
   .app-dashboard-sidebar-title-area
     .app-dashboard-close-sidebar
-      %h3.app-dashboard-sidebar-block-title Dashboard
+      %h3.app-dashboard-sidebar-block-title= t("timer.left_bar.dashboard")
       %button#close-sidebar.app-dashboard-sidebar-close-button.show-for-medium{"aria-label" => "Close menu", "data-app-dashboard-toggle-shrink" => "", :type => "button"}
         %span{"aria-hidden" => "true"}
           %a{:href => "#"}
@@ -14,31 +14,27 @@
   .app-dashboard-sidebar-inner
     %ul.menu.vertical
       %li
-        %a.is-active{:href => timers_path}
+        %a.is-active{:href => timers_path(I18n.locale)}
           %i.large.fi-clock.style1
-          %span.app-dashboard-sidebar-text Your Times
+          %span.app-dashboard-sidebar-text= t("timer.left_bar.times")
       %li
-        %a.is-active{:href => insight_timer_path}
+        %a.is-active{:href => insight_timer_path(I18n.locale)}
           %i.large.fi-social-delicious
-          %span.app-dashboard-sidebar-text Insigths
-      %li
-        %a
-          %i.large.fi-pencil
-          %span.app-dashboard-sidebar-text Industry
+          %span.app-dashboard-sidebar-text= t("timer.left_bar.insiight")
       %li
         - if current_user.is_admin
-          %a.is-active{:href => reports_timer_path}
+          %a.is-active{:href => reports_timer_path(I18n.locale)}
             %i.large.fi-page-multiple
-            %span.app-dashboard-sidebar-text Reports
+            %span.app-dashboard-sidebar-text= t("timer.left_bar.reports")
         %hr/
       %li
-        = link_to  edit_user_registration_path, class: "is-active" do
+        = link_to  edit_user_registration_path(I18n.locale), class: "is-active" do
           %i.large.fi-torsos-male-female
-          %span.app-dashboard-sidebar-text Update Profile
+          %span.app-dashboard-sidebar-text= t("timer.left_bar.update_profile")
       %li
-        = link_to  destroy_user_session_path, method: :delete, class: "is-active" do
+        = link_to  destroy_user_session_path(I18n.locale), method: :delete, class: "is-active" do
           %i.large.fi-power
-          %span.app-dashboard-sidebar-text Log out
+          %span.app-dashboard-sidebar-text= t("devise.logout")
 :javascript
   $('[data-app-dashboard-toggle-shrink]').on('click', function(e) {
     e.preventDefault();

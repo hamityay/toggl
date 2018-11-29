@@ -12,7 +12,7 @@ class Timer < ApplicationRecord
 
   def check_dates
     if start > finish
-      errors.add(:start, "Start date cannot be greated than finish date.")
+      errors.add(:start, t("activerecord.errors.models.timer.attributes.start"))
     end
   end
 

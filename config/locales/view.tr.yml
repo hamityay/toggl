@@ -4,6 +4,7 @@ tr:
     header: Zaman ne çabuk geçti?
     desc: Zamanı takip eden Toggl ile takımınızın üretkenliğini artırın.
     timer: Zamanylayıcı
+    change_language: Dil değiştir
   devise:
     login: Giriş yap
     logout: Çıkış yap
@@ -13,6 +14,8 @@ tr:
     update: Güncelle
     cancel: Hesabımı iptal et
     back: Geri git
+    did_not_confirmation: Doğrulama talimatlarını almadım.
+    did_not_unlock: Hesap krtarma talimatlarını almadım.
   timer:
     left_bar:
       dashboard: Panel
@@ -26,6 +29,7 @@ tr:
       are_you_sure: Silmek istediğinize emin misiniz?
       create: Zaman Ekle
       time: "%{time} dk."
+      delete: Sil
     insight:
       summary_sentences_html: "Zamanlarınızın toplamı <strong>%{personal_time} dk.</strong> bu da toplam zamanların <strong>% %{percentage}</strong> 'ne eşit."
       title_1: Zamanlarınızın, Zaman Tipine Göre Dağılımı

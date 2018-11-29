@@ -39,10 +39,10 @@
             %tr
               %td{"data-label" => "Info"}= time.info
               %td{"data-label" => "Type"}= time.type.name
-              %td{"data-label" => "Start"}= time.start
-              %td{"data-label" => "Finish"}= time.finish
+              %td{"data-label" => "Start"}= l(time.start, format: :long)
+              %td{"data-label" => "Finish"}= l(time.finish, format: :long)
               %td{"data-label" => "Duration"}= t("timer.index.time",time: time.duration.to_s)
               %td{"data-label" => "Action"}
-                = link_to time, method: :delete, data: { confirm: t('timer.index.are_you_sure') }, title: 'Delete', 'data-toggle' => 'tooltip' do
+                = link_to timer_path(I18n.locale, time), method: :delete, data: { confirm: t('timer.index.are_you_sure') }, title: t("timer.index.delete"), 'data-toggle' => 'tooltip' do
                   %i.fi-paint-bucket
 

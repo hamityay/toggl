@@ -1,5 +1,16 @@
 ---
 tr:
+  title:
+    main: Toggl - Ücretsiz Zaman Takibi
+    login: Toggl - Giriş Yap
+    signup: Toggl - Kayıt Ol
+    edit: Toggl - Profil Güncelle
+    timer: Toggl - Zamanlayıcı
+    insight: Toggl - Insight
+    reports: Toggl - Raporlar
+    pass_new: Toggl - Şifre Yenileme
+    confirm_new: Toggl - E-mail Onaylama
+    unlock: Toggl - Hesap Kurtarma
   main:
     header: Zaman ne çabuk geçti?
     desc: Zamanı takip eden Toggl ile takımınızın üretkenliğini artırın.

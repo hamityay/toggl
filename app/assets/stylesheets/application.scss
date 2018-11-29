@@ -89,5 +89,17 @@ $signup-height: 100vh;
 }
 
 .change_language {
-  display: flex;
+  position: absolute;
+  float: left !important;
+  right: 1rem;
+  top: 1rem;
+  a {
+    color: white;
+  }
+}
+
+.fix-height {
+  select[multiple]{
+    min-height: 270px;
+  }
 }

@@ -1,3 +1,5 @@
+- content_for :title do
+  = t("title.reports")
 .app-dashboard.shrink-medium
   .row.expanded.app-dashboard-top-nav-bar
     .columns.medium-2
@@ -13,10 +15,10 @@
       = search_form_for @search, url: reports_timer_path, builder: SimpleForm::FormBuilder, html: {class: 'form-inline', data: { turboform: true }} do |f|
         .grid-x.grid-padding-x
           .cell.medium-2
-            = f.input_field :info_or_type_name_or_user_name_cont, label: t("timer.report.search_keyword"), class: 'form-control', placeholder: "Enter for search"
-          .cell.medium-2
+            = f.input :info_or_type_name_or_user_name_cont, required: false, label: t("timer.report.search_keyword")
+          .cell.medium-2.fix-height
             = f.input :user_id_in, required: false, label: t("timer.report.search_user"), collection: get_users, input_html: { multiple: true }
-          .cell.medium-2
+          .cell.medium-2.fix-height
             = f.input :type_id_in, required: false, label: t("timer.report.search_type"), collection: get_types, input_html: { multiple: true }
           .cell.medium-2
             = f.input :start_gteq, label: t("timer.report.search_first"), as: :datetime, value: ((params[:q].present? and params[:q][:start_gteq].present?) ? params[:q][:start_gteq].to_datetime : DateTime.now - 1.week), hint: "Eklenen zmanların başlangıç tarihlerine göre filtrelemektedir.", 'data-toggle' => 'tooltip'

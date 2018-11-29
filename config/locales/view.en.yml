@@ -1,5 +1,16 @@
 ---
 en:
+  title:
+    main: Toggl - Free Time Tracking
+    login: Toggl - Log in
+    signup: Toggl - Sign up
+    edit: Toggl - Update Profile
+    timer: Toggl - Timer
+    insight: Toggl - Insight
+    reports: Toggl - Reports
+    pass_new: Toggl - Reset Password
+    confirm_new: Toggl - Confirm E-mail
+    unlock: Toggl - Unlock Account
   main:
     header: Where did time go?
     desc: Turn your team on to productivity with Toggl the time tracker.

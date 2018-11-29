@@ -1,14 +1,16 @@
+- content_for :title do
+  = t("title.pass_new")
 .rest-section
   .rest-section-form
-    %h2 Forgot your password?
+    %h2= t("devise.forget")
     = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
       = f.error_notification
       .form-inputs
-        = f.input :email, label: false, placeholder: "E-mail",
+        = f.input :email, label: false, placeholder: t("activerecord.attributes.user.email"),
           required: true,
           autofocus: true,
           input_html: { autocomplete: "email" }
       .form-actions.expanded.button-group.medium
-        = f.button :submit, "Send me reset password instructions", class: "button lightslategray"
+        = f.button :submit, t("devise.send_me_reset"), class: "button lightslategray"
 
         = render "devise/shared/links"
